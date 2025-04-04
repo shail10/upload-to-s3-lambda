@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - echo Installing NPM packages...
+      - npm install
+  build:
+    commands:
+      - echo Zipping Lambda function and node_modules...
+      - zip -r lambda-deployment-package.zip .  # Zips everything, including node_modules
+artifacts:
+  files:
+    - lambda-deployment-package.zip
+  discard-paths: yes
